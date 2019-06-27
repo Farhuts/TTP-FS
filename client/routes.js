@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
-import {Login, Signup, UserHome} from './components'
+import {Login, Signup, UserHome, AllStocks} from './components'
 import {me} from './store'
 
 class Routes extends Component {
@@ -19,6 +19,7 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             <Route path="/home" component={UserHome} />
+            <Route path="/stocks" component={AllStocks} />
           </Switch>
         )}
         <Route component={Login} />
