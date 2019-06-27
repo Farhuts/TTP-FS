@@ -24,3 +24,14 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+.component {
+  position: absolute;
+  border-radius: 25px;
+}
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
