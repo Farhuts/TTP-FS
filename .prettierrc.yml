@@ -7,3 +7,4 @@ singleQuote: true # false
 bracketSpacing: false # true
 # jsxBracketSameLine: false # false
 # arrowParens: avoid # avoid | always
+ 

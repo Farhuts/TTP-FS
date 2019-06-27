@@ -9,10 +9,15 @@ a {
 label {
   display: block;
 }
+nav {
+  background-color: gray;
+}
 
 nav a {
   display: inline-block;
   margin: 1em;
+  text-decoration: none;
+  color: white;
 }
 
 form div {
