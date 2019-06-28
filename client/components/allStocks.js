@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import CompanyInfo from './companyInfo'
+import {connect} from 'react-redux'
+import {newTransactionThunk} from '../store'
 
 const API_TOKEN = 'Tpk_08b9dbd013154143b7fb30f25df98a55'
 const API_SEARCH_TOKEN = 'pk_d924c19cd47546b49ebdfdd2ace6b4dc'
@@ -9,17 +11,20 @@ const BATCH_SIZE = 30
 const BASE_URL = 'https://cloud.iexapis.com/stable/stock/market/batch'
 
 const defaultState = {
+  quantity: 1,
   symbol: '',
   companyInfo: '',
   showComponent: false
 }
 
 class AllStocks extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = defaultState
     this.handleChange = this.handleChange.bind(this)
+    this.handleChangeDropDown = this.handleChangeDropDown.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.buyShares = this.buyShares.bind(this)
   }
 
   async handleChange(evt) {
@@ -28,6 +33,12 @@ class AllStocks extends Component {
     })
   }
 
+  handleChangeDropDown(evt) {
+    console.log('target', evt.target.value)
+    this.setState({
+      quantity: evt.target.value
+    })
+  }
   handleSubmit(evt) {
     evt.preventDefault()
     const symbol = this.state.symbol
@@ -46,6 +57,17 @@ class AllStocks extends Component {
       })
   }
 
+  buyShares(evt) {
+    evt.preventDefault()
+    console.log('BUYSHARES', typeof this.state.quantity)
+    let transactionInfo = {
+      symbol: this.state.symbol,
+      shares: this.state.quantity,
+      price: this.state.companyInfo.iexRealtimePrice,
+      userId: this.props.user.id
+    }
+    this.props.newTransactionThunkDispatch(transactionInfo)
+  }
   render() {
     return (
       <div>
@@ -61,11 +83,21 @@ class AllStocks extends Component {
         </form>
         <CompanyInfo
           comapanyDetails={this.state.companyInfo}
+          handleChange={this.handleChangeDropDown}
+          value={this.state.quantity}
           showComponent={this.state.showComponent}
+          buyShares={this.buyShares}
         />
       </div>
     )
   }
 }
+const mapState = state => ({
+  user: state.user
+})
 
-export default AllStocks
+const mapDispatch = dispatch => ({
+  newTransactionThunkDispatch: info => dispatch(newTransactionThunk(info))
+})
+
+export default connect(mapState, mapDispatch)(AllStocks)

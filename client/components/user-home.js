@@ -1,30 +1,37 @@
-import React from 'react'
-import history from '../history'
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {userInfo} from '../store'
 
-import AllStocks from './allStocks'
-
-export const UserHome = props => {
-  const {email, userName, balance} = props
-
-  return (
-    <div>
-      <h3>
-        Welcome, {email} {userName}
-      </h3>
-      <h4>Your balance is {balance}USD</h4>
-      <Link to="/stocks">
-        <button>Explore Stocks</button>
-      </Link>
-    </div>
-  )
+class UserHome extends Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    this.props.userInfoThunk()
+  }
+  render() {
+    const {userName, email, balance} = this.props.user
+    return (
+      <div>
+        <h3>
+          Welcome, {email} {userName}
+        </h3>
+        <h4>Your balance is {balance} USD</h4>
+        <Link to="/stocks">
+          <button>Explore Stocks</button>
+        </Link>
+      </div>
+    )
+  }
 }
 
 const mapState = state => ({
-  email: state.user.email,
-  userName: state.user.userName,
-  balance: state.user.balance
+  user: state.user
 })
 
-export default connect(mapState)(UserHome)
+const mapDispatch = dispatch => ({
+  userInfoThunk: () => dispatch(userInfo())
+})
+
+export default connect(mapState, mapDispatch)(UserHome)

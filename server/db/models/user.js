@@ -24,7 +24,10 @@ const User = db.define('user', {
     }
   },
   balance: {
-    type: Sequelize.INTEGER
+    type: Sequelize.FLOAT,
+    validate: {
+      min: 0
+    }
   },
   googleId: {
     type: Sequelize.STRING
