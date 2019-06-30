@@ -1,6 +1,9 @@
 import React from 'react'
+const ErrorMessage =
+  'You do not have enough money in your account to make this investment.'
 
 const CompanyInfo = ({
+  userBalance,
   comapanyDetails,
   showComponent,
   buyShares,
@@ -8,6 +11,7 @@ const CompanyInfo = ({
   value
 }) => {
   let percentColor
+  let message
   let showHideClassName = showComponent
     ? 'component display-block'
     : 'component display-none'
@@ -18,7 +22,7 @@ const CompanyInfo = ({
     else percentColor = 'green'
   }
   let quantityDropDown = []
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 1; i < 1000; i++) {
     quantityDropDown.push(i)
   }
   const dropDown = quantityDropDown.map(elem => {
@@ -28,6 +32,9 @@ const CompanyInfo = ({
       </option>
     )
   })
+  if (value * comapanyDetails.iexRealtimePrice > userBalance)
+    message = ErrorMessage
+  else message = ''
   return (
     <div className={showHideClassName}>
       <h5 className={percentColor}>{comapanyDetails.changePercent}</h5>
@@ -37,6 +44,7 @@ const CompanyInfo = ({
       <h3>price: {comapanyDetails.iexRealtimePrice}USD</h3>
       <h3>data {comapanyDetails.latestTime}</h3>
       <div className="dropdown">
+        <h2 className="errorMessage">{message}</h2>
         <select value={value} onChange={handleChange}>
           {dropDown}
         </select>
