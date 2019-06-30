@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import CompanyInfo from './companyInfo'
+import Modal from './modal'
 import {connect} from 'react-redux'
 import {newTransactionThunk} from '../store'
 
@@ -8,13 +9,14 @@ const API_TOKEN = 'Tpk_08b9dbd013154143b7fb30f25df98a55'
 const API_SEARCH_TOKEN = 'pk_d924c19cd47546b49ebdfdd2ace6b4dc'
 const REFRESH_SECONDS = 10
 const BATCH_SIZE = 30
-const BASE_URL = 'https://cloud.iexapis.com/stable/stock/market/batch'
+const ErrorMessage = "Symbol Doesn't Exist"
 
 const defaultState = {
   quantity: 1,
   symbol: '',
   companyInfo: '',
-  showComponent: false
+  showComponent: false,
+  showModalComp: false
 }
 
 class AllStocks extends Component {
@@ -25,6 +27,8 @@ class AllStocks extends Component {
     this.handleChangeDropDown = this.handleChangeDropDown.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.buyShares = this.buyShares.bind(this)
+    this.showModal = this.showModal.bind(this)
+    this.hideModal = this.hideModal.bind(this)
   }
 
   async handleChange(evt) {
@@ -53,13 +57,13 @@ class AllStocks extends Component {
         })
       })
       .catch(error => {
-        console.log(error)
+        if (error) {
+          this.setState({showModalComp: true})
+        }
       })
   }
-
   buyShares(evt) {
     evt.preventDefault()
-    console.log('BUYSHARES', typeof this.state.quantity)
     let transactionInfo = {
       symbol: this.state.symbol,
       shares: this.state.quantity,
@@ -68,9 +72,18 @@ class AllStocks extends Component {
     }
     this.props.newTransactionThunkDispatch(transactionInfo)
   }
+  showModal() {
+    this.setState({showModalComp: true})
+  }
+
+  hideModal() {
+    this.setState({showModalComp: false})
+  }
   render() {
+    const userBalance = this.props.user.balance
+    console.log('comapanyDetails', this.state.companyInfo)
     return (
-      <div>
+      <div className="main">
         <h3>Select a company</h3>
         <form id="todo-form" onSubmit={this.handleSubmit}>
           <input
@@ -82,11 +95,16 @@ class AllStocks extends Component {
           <button type="submit">FIND</button>
         </form>
         <CompanyInfo
+          userBalance={userBalance}
           comapanyDetails={this.state.companyInfo}
           handleChange={this.handleChangeDropDown}
           value={this.state.quantity}
           showComponent={this.state.showComponent}
           buyShares={this.buyShares}
+        />
+        <Modal
+          hideModal={this.hideModal}
+          showModalComp={this.state.showModalComp}
         />
       </div>
     )
@@ -101,3 +119,4 @@ const mapDispatch = dispatch => ({
 })
 
 export default connect(mapState, mapDispatch)(AllStocks)
+// alert('Wrong symbol :(');
