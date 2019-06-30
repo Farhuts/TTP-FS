@@ -24,11 +24,6 @@ class AllStocks extends Component {
     super(props)
     this.state = defaultState
     this.handleChange = this.handleChange.bind(this)
-    this.handleChangeDropDown = this.handleChangeDropDown.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.buyShares = this.buyShares.bind(this)
-    this.showModal = this.showModal.bind(this)
-    this.hideModal = this.hideModal.bind(this)
   }
 
   async handleChange(evt) {
@@ -37,13 +32,14 @@ class AllStocks extends Component {
     })
   }
 
-  handleChangeDropDown(evt) {
+  handleChangeDropDown = evt => {
     console.log('target', evt.target.value)
     this.setState({
       quantity: evt.target.value
     })
   }
-  handleSubmit(evt) {
+
+  handleSubmit = evt => {
     evt.preventDefault()
     const symbol = this.state.symbol
     axios
@@ -62,21 +58,25 @@ class AllStocks extends Component {
         }
       })
   }
-  buyShares(evt) {
+  buyShares = evt => {
     evt.preventDefault()
     let transactionInfo = {
       symbol: this.state.symbol,
+      name: this.state.companyInfo.companyName,
       shares: this.state.quantity,
-      price: this.state.companyInfo.iexRealtimePrice,
-      userId: this.props.user.id
+      price:
+        this.state.companyInfo.iexRealtimePrice ||
+        this.state.companyInfo.latestPrice,
+      userId: this.props.user.id,
+      date: this.state.companyInfo.latestTime
     }
     this.props.newTransactionThunkDispatch(transactionInfo)
   }
-  showModal() {
+  showModal = () => {
     this.setState({showModalComp: true})
   }
 
-  hideModal() {
+  hideModal = () => {
     this.setState({showModalComp: false})
   }
   render() {

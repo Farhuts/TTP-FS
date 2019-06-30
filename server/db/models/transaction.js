@@ -5,6 +5,9 @@ const Transaction = db.define('transactions', {
   symbol: {
     type: Sequelize.STRING
   },
+  name: {
+    type: Sequelize.STRING
+  },
   shares: {
     type: Sequelize.STRING
   },
