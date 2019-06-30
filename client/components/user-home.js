@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {userInfo} from '../store'
 
+import TransactionsList from './transactionsList'
+
 class UserHome extends Component {
   constructor(props) {
     super(props)

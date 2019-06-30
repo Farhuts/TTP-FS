@@ -1,7 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
-import {Login, Signup, UserHome, AllStocks} from './components'
+import {
+  Login,
+  Signup,
+  UserHome,
+  AllStocks,
+  TransactionsList
+} from './components'
 import {me} from './store'
 
 class Routes extends Component {
@@ -20,6 +26,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={UserHome} />
             <Route path="/stocks" component={AllStocks} />
+            <Route path="/all" component={TransactionsList} />
           </Switch>
         )}
         <Route component={Login} />

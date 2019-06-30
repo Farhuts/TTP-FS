@@ -2,15 +2,29 @@ import axios from 'axios'
 import history from '../history'
 
 // ACTION TYPES
+const GET_TRANSACTIONS = 'GET_TRANSACTIONS'
 const BUY_STOCK = 'BUY_STOCK'
 
 // INITIAL STATE
 const defaultTransactions = {}
 
 // ACTION CREATORS
+const getTransactions = userTransactions => ({
+  type: GET_TRANSACTIONS,
+  userTransactions
+})
 const createTransaction = user => ({type: BUY_STOCK, user})
 
 // THUNK CREATORS
+export const getTransactionsThunk = () => async dispatch => {
+  try {
+    let allTransactions = await axios.get('/api/transactions/all')
+    dispatch(getTransactions(allTransactions.data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export const newTransactionThunk = info => async dispatch => {
   try {
     let updated = await axios.post('/api/transactions/stocks', info)
@@ -24,8 +38,8 @@ export const newTransactionThunk = info => async dispatch => {
 // REDUCER
 export default function(state = defaultTransactions, action) {
   switch (action.type) {
-    case BUY_STOCK:
-      return {...state, action: action.user}
+    case GET_TRANSACTIONS:
+      return action.userTransactions
     default:
       return state
   }

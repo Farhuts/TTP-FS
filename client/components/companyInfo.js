@@ -12,6 +12,7 @@ const CompanyInfo = ({
 }) => {
   let percentColor
   let message
+  let price = comapanyDetails.iexRealtimePrice || comapanyDetails.latestPrice
   let showHideClassName = showComponent
     ? 'component display-block'
     : 'component display-none'
@@ -41,7 +42,7 @@ const CompanyInfo = ({
       <h2>
         Name: {comapanyDetails.companyName}, Symbol: {comapanyDetails.symbol}
       </h2>
-      <h3>price: {comapanyDetails.iexRealtimePrice}USD</h3>
+      <h3>price: {price}USD</h3>
       <h3>data {comapanyDetails.latestTime}</h3>
       <div className="dropdown">
         <h2 className="errorMessage">{message}</h2>

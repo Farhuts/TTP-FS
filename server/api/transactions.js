@@ -5,14 +5,16 @@ module.exports = router
 router.post('/stocks', async (req, res, next) => {
   try {
     const symbol = req.body.symbol
+    const name = req.body.name
     const shares = req.body.shares
     const price = req.body.price
     const date = req.body.date
     const userId = req.body.userId
-    console.log('SHARES', shares)
+
     const findUser = await User.findOne({
       where: {id: userId}
     })
+
     let newBalance = findUser.balance - shares * price
     let updateUserBalance = await findUser.update({
       id: userId,
@@ -23,9 +25,22 @@ router.post('/stocks', async (req, res, next) => {
       shares,
       price,
       date,
-      userId
+      userId,
+      name
     })
     res.json({updateUserBalance, transactionDetails})
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/all', async (req, res, next) => {
+  try {
+    const userId = req.user.id
+    const allTransactions = await Transaction.findAll({
+      where: {userId}
+    })
+    res.json(allTransactions)
   } catch (err) {
     next(err)
   }
