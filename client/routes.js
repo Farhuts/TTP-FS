@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import {
-  Login,
-  Signup,
+  AuthLoginForm,
+  AuthSignupForm,
   UserHome,
   AllStocks,
   TransactionsList,
@@ -21,8 +21,8 @@ class Routes extends Component {
 
     return (
       <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route exact path="/login" component={AuthLoginForm} />
+        <Route exact path="/signup" component={AuthSignupForm} />
         {isLoggedIn && (
           <Switch>
             <Route path="/home" component={UserHome} />
@@ -31,7 +31,7 @@ class Routes extends Component {
             <Route path="/portfolio" component={OwnedStocks} />
           </Switch>
         )}
-        <Route component={Login} />
+        <Route component={AuthLoginForm} />
       </Switch>
     )
   }
