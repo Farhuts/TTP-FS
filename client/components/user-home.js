@@ -3,8 +3,6 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {userInfo} from '../store'
 
-import TransactionsList from './transactionsList'
-
 class UserHome extends Component {
   constructor(props) {
     super(props)
@@ -15,21 +13,30 @@ class UserHome extends Component {
   render() {
     const {userName, email, balance} = this.props.user
     return (
-      <div>
-        <h3>
-          Welcome, {email} {userName}
-        </h3>
-        <h4>Your balance is {balance} USD</h4>
-        <Link to="/stocks">
-          <button>Explore Stocks</button>
-        </Link>
+      <div id="margin-top" className="flex-parentUserHome">
+        <div className="flex-childUserHome">
+          <h2 className="h2-userHome">Welcome {userName}!</h2>
+          <h4>Your current balance is {balance} USD</h4>
+          <div className="user-btns">
+            <Link to="/stocks">
+              <button className="stockBtn">Buy Stocks</button>
+            </Link>
+            <Link to="/portfolio">
+              <button className="portfolioBtn">Portfolio</button>
+            </Link>
+            <Link to="/transactions">
+              <button className="transactionsBtn">Transactions</button>
+            </Link>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
 const mapState = state => ({
-  user: state.user
+  user: state.user,
+  uodatedBalance: state
 })
 
 const mapDispatch = dispatch => ({

@@ -73,7 +73,7 @@ class OwnedStocks extends Component {
     )
 
     return (
-      <div>
+      <div id="margin-top">
         <h1>PORTFOLIO</h1>
         <h2 />
         {stockInfo}

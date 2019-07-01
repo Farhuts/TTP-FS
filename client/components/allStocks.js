@@ -36,24 +36,23 @@ class AllStocks extends Component {
     })
   }
 
-  handleSubmit = evt => {
+  handleSubmit = async evt => {
     evt.preventDefault()
     const symbol = this.state.symbol
-    axios
-      .get(
+    try {
+      let response = await axios.get(
         `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?token=${API_TOKEN}`
       )
-      .then(response => {
-        this.setState({
-          companyInfo: response.data,
-          showComponent: true
-        })
+      console.log('response', response.data)
+      this.setState({
+        companyInfo: response.data,
+        showComponent: true
       })
-      .catch(error => {
-        if (error) {
-          this.setState({showModalComp: true})
-        }
-      })
+    } catch (err) {
+      if (err) {
+        this.setState({showModalComp: true})
+      }
+    }
   }
   buyShares = evt => {
     evt.preventDefault()
@@ -61,13 +60,13 @@ class AllStocks extends Component {
       symbol: this.state.symbol,
       name: this.state.companyInfo.companyName,
       shares: this.state.quantity,
-      price:
-        this.state.companyInfo.iexRealtimePrice ||
-        this.state.companyInfo.latestPrice,
+      price: this.state.companyInfo.iexRealtimePrice,
+      // ||this.state.companyInfo.latestPrice,
       userId: this.props.user.id,
       date: this.state.companyInfo.latestTime
     }
     this.props.newTransactionThunkDispatch(transactionInfo)
+    this.setState(defaultState)
   }
   showModal = () => {
     this.setState({showModalComp: true})
@@ -79,8 +78,8 @@ class AllStocks extends Component {
   render() {
     const userBalance = this.props.user.balance
     return (
-      <div className="main">
-        <h3>Select a company</h3>
+      <div id="margin-top" className="main">
+        <h3>TICKET</h3>
         <form id="todo-form" onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -88,7 +87,9 @@ class AllStocks extends Component {
             value={this.state.symbol}
             placeholder="Search Company"
           />
-          <button type="submit">FIND</button>
+          <button className="findStockBtn" type="submit">
+            FIND
+          </button>
         </form>
         <CompanyInfo
           userBalance={userBalance}

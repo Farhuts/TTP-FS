@@ -9,13 +9,14 @@ a {
 label {
   display: block;
 }
+
 nav {
   display: flex;
-  position: relative;
+  position: fixed;
+  margin-top: -5%;
+  height: 3em;
   align-items: center;
   justify-content: space-around;
-  margin-top: -0.5%;
-  height: 3em;
   width: calc(100vw - 1em);
   border-radius: 0 0 1em 1em;
   background-color: rgba(16, 47, 95, 0.3);
@@ -35,7 +36,7 @@ nav a {
 }
 
 nav a:hover {
-  transform: scale(1.2);
+  transform: translateX(-10px);
 }
 
 form div {
@@ -43,13 +44,16 @@ form div {
   display: inline-block;
 }
 .component {
-  position: absolute;
-  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0% 20% 0% 20%;
+  height: auto;
+  padding: 1%;
+  border-radius: 5%;
+  background: #dcffbf1c;
+  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
 }
-.display-block {
-  display: block;
-}
-
 .display-none {
   display: none;
 }
@@ -69,6 +73,56 @@ form div {
 .errorMessage {
   color: red;
 }
+
+#todo-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#todo-form input {
+  margin-bottom: -3%;
+}
+
+.companyInfo {
+  margin-bottom: 0%;
+}
+
+.companyInfo.name {
+  font-weight: 600;
+}
+
+.select-companyInfo {
+  display: flex;
+  width: 300%;
+  margin-bottom: 30%;
+}
+
+select {
+  width: 50%;
+  margin-right: 5%;
+  margin-left: -32%;
+  height: 3em;
+  border-radius: 25px;
+  font-size: 1.1rem;
+}
+
+.companyInfoBtn {
+  width: 50%;
+  height: 3em;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  background: #a4c3df;
+  transition: 1s;
+}
+.companyInfoBtn:hover {
+  background: #194974;
+  color: white;
+}
+
+.main h3 {
+  text-align: center;
+}
 .modal {
   position: fixed;
   top: 0;
@@ -85,7 +139,15 @@ form div {
   height: 30%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -80%);
+  background: #f5f5f5;
+}
+.container.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  margin-top: 5%;
 }
 
 .flex {
@@ -101,7 +163,7 @@ form div {
   width: 30vw;
   height: auto;
   padding: 1%;
-  border-radius: 15%;
+  border-radius: 5%;
   background: #8080801f;
   transition: 1s;
 }
@@ -113,6 +175,7 @@ label {
 }
 input {
   font-size: 1em;
+  text-align: center;
   height: 3em;
   margin: 1%;
   border-radius: 15px;
@@ -128,8 +191,106 @@ input {
   transition: 1s;
 }
 
+.findStockBtn {
+  font-size: 1.2em;
+  height: 3em;
+  width: 14%;
+  margin: 5% 1% 4% 1%;
+  border-radius: 15px;
+  color: white;
+  background: rgba(113, 159, 60, 0.55);
+  transition: 1s;
+}
+.findStockBtn:hover {
+  background: rgb(88, 124, 47);
+}
 .displayNameBtn:hover {
   transform: translateY(10px);
   background: rgba(12, 26, 48, 0.82);
   color: white;
+}
+
+.flex-parentUserHome {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.flex-childUserHome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.h2-userHome {
+  margin-bottom: 0;
+}
+.user-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200%;
+}
+
+.stockBtn {
+  font-size: 1.2em;
+  height: 4em;
+  width: 7em;
+  margin: 5% 1% 4% 1%;
+  border-radius: 15px;
+  color: white;
+  background: rgba(15, 116, 98, 0.44);
+  margin-left: -6%;
+  transition: 1s;
+}
+
+.stockBtn:hover {
+  background: rgba(9, 89, 75, 0.76);
+}
+
+.portfolioBtn {
+  font-size: 1.2em;
+  height: 4em;
+  width: 7em;
+  margin: 5% 1% 4% 1%;
+  border-radius: 15px;
+  color: white;
+  background: rgba(23, 15, 116, 0.44);
+  transition: 1s;
+  margin-right: 5%;
+  margin-left: 5%;
+  transition: 1s;
+}
+.portfolioBtn:hover {
+  background: rgba(22, 13, 130, 0.74);
+}
+
+.transactionsBtn {
+  font-size: 1.2em;
+  height: 4em;
+  width: 7em;
+  margin: 5% 1% 4% 1%;
+  border-radius: 15px;
+  color: white;
+  background: rgba(103, 116, 15, 0.44);
+  transition: 1s;
+  margin-right: 5%;
+  margin-left: 15%;
+  transition: 1s;
+}
+.transactionsBtn:hover {
+  background: rgba(103, 116, 15, 0.83);
+}
+
+#margin-top {
+  margin-top: 5%;
+}
+
+.modalBtn {
+  font-size: 1.2em;
+  height: 2em;
+  width: 5em;
+  border-radius: 5px;
+  margin-top: 3%;
+  color: #2d342c;
+  background: rgba(108, 149, 110, 0.55);
 }
