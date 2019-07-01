@@ -9,6 +9,8 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       {isLoggedIn ? (
         <div>
           <Link to="/home">Home</Link>
+          <Link to="/portfolio">Portfolio</Link>
+          <Link to="/all">Transactions</Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>
@@ -20,7 +22,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </div>
       )}
     </nav>
-    <hr />
   </div>
 )
 

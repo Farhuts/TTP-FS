@@ -10,14 +10,32 @@ label {
   display: block;
 }
 nav {
-  background-color: gray;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: -0.5%;
+  height: 3em;
+  width: calc(100vw - 1em);
+  border-radius: 0 0 1em 1em;
+  background-color: rgba(16, 47, 95, 0.3);
+  transition: 2s;
 }
 
+nav:hover {
+  background-color: rgba(12, 26, 48, 0.82);
+}
 nav a {
   display: inline-block;
+  font-size: 1.2em;
   margin: 1em;
   text-decoration: none;
   color: white;
+  transition: 1s;
+}
+
+nav a:hover {
+  transform: scale(1.2);
 }
 
 form div {
@@ -84,12 +102,8 @@ form div {
   height: auto;
   padding: 1%;
   border-radius: 15%;
-  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
+  background: #8080801f;
   transition: 1s;
-}
-
-.auth-form:hover {
-  /* transform: scale(1.1); */
 }
 
 label {
