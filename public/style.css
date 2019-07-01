@@ -69,3 +69,53 @@ form div {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  height: auto;
+  padding: 1%;
+  border-radius: 15%;
+  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
+  transition: 1s;
+}
+
+.auth-form:hover {
+  /* transform: scale(1.1); */
+}
+
+label {
+  font-size: 1.2em;
+  height: 2em;
+  text-align: center;
+}
+input {
+  font-size: 1em;
+  height: 3em;
+  margin: 1%;
+  border-radius: 15px;
+}
+
+.displayNameBtn {
+  font-size: 1.2em;
+  height: 4em;
+  margin: 5% 1% 4% 1%;
+  border-radius: 15px;
+  color: white;
+  background: rgba(16, 47, 95, 0.44);
+  transition: 1s;
+}
+
+.displayNameBtn:hover {
+  transform: translateY(10px);
+  background: rgba(12, 26, 48, 0.82);
+  color: white;
+}
