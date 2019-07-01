@@ -1,7 +1,7 @@
 node_modules
+auth-config
 public/bundle.js
 public/bundle.js.map
-secrets.js
 .DS_Store
 npm-debug.log
-yarn-error.log  
+yarn-error.log

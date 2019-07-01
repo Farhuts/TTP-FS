@@ -5,10 +5,8 @@ import Modal from './modal'
 import {connect} from 'react-redux'
 import {newTransactionThunk} from '../store'
 
-const API_TOKEN = 'Tpk_08b9dbd013154143b7fb30f25df98a55'
-const API_SEARCH_TOKEN = 'pk_d924c19cd47546b49ebdfdd2ace6b4dc'
-const REFRESH_SECONDS = 10
-const BATCH_SIZE = 30
+import KEY from '../../auth-config/keys'
+const API_TOKEN = KEY.iex.clientKey
 const ErrorMessage = "Symbol Doesn't Exist"
 
 const defaultState = {
@@ -33,7 +31,6 @@ class AllStocks extends Component {
   }
 
   handleChangeDropDown = evt => {
-    console.log('target', evt.target.value)
     this.setState({
       quantity: evt.target.value
     })
@@ -81,7 +78,6 @@ class AllStocks extends Component {
   }
   render() {
     const userBalance = this.props.user.balance
-    console.log('comapanyDetails', this.state.companyInfo)
     return (
       <div className="main">
         <h3>Select a company</h3>
@@ -119,4 +115,3 @@ const mapDispatch = dispatch => ({
 })
 
 export default connect(mapState, mapDispatch)(AllStocks)
-// alert('Wrong symbol :(');
