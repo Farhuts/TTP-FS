@@ -27,7 +27,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={UserHome} />
             <Route path="/stocks" component={AllStocks} />
-            <Route path="/all" component={TransactionsList} />
+            <Route path="/transactions" component={TransactionsList} />
             <Route path="/portfolio" component={OwnedStocks} />
           </Switch>
         )}

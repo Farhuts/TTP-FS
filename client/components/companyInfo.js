@@ -12,7 +12,8 @@ const CompanyInfo = ({
 }) => {
   let percentColor
   let message
-  let price = comapanyDetails.iexRealtimePrice || comapanyDetails.latestPrice
+  let price = comapanyDetails.iexRealtimePrice
+  // || comapanyDetails.latestPrice
   let showHideClassName = showComponent
     ? 'component display-block'
     : 'component display-none'
@@ -23,7 +24,7 @@ const CompanyInfo = ({
     else percentColor = 'green'
   }
   let quantityDropDown = []
-  for (let i = 1; i < 1000; i++) {
+  for (let i = 1; i < 50; i++) {
     quantityDropDown.push(i)
   }
   const dropDown = quantityDropDown.map(elem => {
@@ -38,20 +39,22 @@ const CompanyInfo = ({
   else message = ''
   return (
     <div className={showHideClassName}>
-      <h5 className={percentColor}>{comapanyDetails.changePercent}</h5>
-      <h2>
-        Name: {comapanyDetails.companyName}, Symbol: {comapanyDetails.symbol}
+      <h3 className={percentColor}>{comapanyDetails.change}</h3>
+      <h2 className="companyInfo name">
+        Company Name: {comapanyDetails.companyName}
       </h2>
-      <h3>price: {price}USD</h3>
-      <h3>data {comapanyDetails.latestTime}</h3>
+      <h2 className="companyInfo">Symbol: "{comapanyDetails.symbol}"</h2>
+      <h3 className="companyInfo">Price: {price} USD</h3>
       <div className="dropdown">
         <h2 className="errorMessage">{message}</h2>
-        <select value={value} onChange={handleChange}>
-          {dropDown}
-        </select>
-        <button type="submit" onClick={buyShares}>
-          BUY
-        </button>
+        <div className="select-companyInfo">
+          <select value={value} onChange={handleChange}>
+            {dropDown}
+          </select>
+          <button className="companyInfoBtn" type="submit" onClick={buyShares}>
+            BUY
+          </button>
+        </div>
       </div>
     </div>
   )

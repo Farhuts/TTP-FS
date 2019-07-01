@@ -24,7 +24,7 @@ const createTransaction = user => ({type: BUY_STOCK, user})
 // THUNK CREATORS
 export const getTransactionsThunk = () => async dispatch => {
   try {
-    let allTransactions = await axios.get('/api/transactions/all')
+    let allTransactions = await axios.get('/api/transactions/transactions')
     dispatch(getTransactions(allTransactions.data))
   } catch (err) {
     console.error(err)

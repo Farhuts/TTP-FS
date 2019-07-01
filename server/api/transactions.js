@@ -34,7 +34,7 @@ router.post('/stocks', async (req, res, next) => {
   }
 })
 
-router.get('/all', async (req, res, next) => {
+router.get('/transactions', async (req, res, next) => {
   try {
     const userId = req.user.id
     const allTransactions = await Transaction.findAll({

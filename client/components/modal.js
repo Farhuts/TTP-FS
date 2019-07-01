@@ -9,7 +9,9 @@ const Modal = ({hideModal, showModalComp}) => {
       <section className="modal-main">
         <div className="container center">
           Such simbol doesn't exist
-          <button onClick={hideModal}>Ok</button>
+          <button className="modalBtn" onClick={hideModal}>
+            Ok
+          </button>
         </div>
       </section>
     </div>

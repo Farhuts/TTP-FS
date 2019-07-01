@@ -27,7 +27,7 @@ class TransactionsList extends Component {
       </div>
     )
     return (
-      <div>
+      <div id="margin-top">
         <h1>TRANSACTIONS</h1>
         {transacHistory}
       </div>
