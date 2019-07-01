@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import LoginForm from './login'
-import {auth} from '../store'
+import {auth} from '../../store'
 
 class AuthLoginForm extends Component {
   constructor(props) {

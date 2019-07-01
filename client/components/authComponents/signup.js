@@ -2,8 +2,13 @@ import React from 'react'
 
 const SignupForm = ({displayName, handleSubmit, name, error}) => {
   return (
-    <div>
-      <form id="signup" onSubmit={handleSubmit} name={name}>
+    <div className="flex">
+      <form
+        className="auth-form"
+        id="signup"
+        onSubmit={handleSubmit}
+        name={name}
+      >
         <label htmlFor="userName">
           <small>Name</small>
         </label>
