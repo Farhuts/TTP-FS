@@ -45,3 +45,16 @@ router.get('/all', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/portfolio', async (req, res, next) => {
+  try {
+    const userId = req.user.id
+    const allTransactions = await Transaction.findAll({
+      where: {userId},
+      attributes: ['symbol', 'shares', 'price', 'date']
+    })
+    res.json(allTransactions)
+  } catch (err) {
+    next(err)
+  }
+})

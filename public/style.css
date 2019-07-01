@@ -44,6 +44,10 @@ form div {
   color: green;
 }
 
+.gray {
+  color: gray;
+}
+
 .errorMessage {
   color: red;
 }
