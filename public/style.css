@@ -90,6 +90,7 @@ form div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
 }
 
 #todo-form input {
@@ -362,4 +363,52 @@ input {
   text-align: center;
   border-radius: 5px;
   width: 5em;
+}
+
+.transactions-flex {
+  display: flex;
+  color: #333;
+  justify-content: center;
+}
+
+.table-wrapper {
+  max-height: 700px;
+  overflow-y: scroll;
+}
+
+table {
+  position: relative;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+thead {
+  display: flex;
+}
+
+td,
+th {
+  white-space: nowrap;
+  width: 12em;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  overflow: scroll;
+}
+
+th {
+  background-color: #eee;
+  position: sticky;
+  top: -1px;
+  z-index: 2;
+
+  &:first-of-type {
+    left: 0;
+    z-index: 3;
+  }
+}
+
+.h1portfolio {
+  text-align: center;
+  padding: 2em 0 1em 0;
 }

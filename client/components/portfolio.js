@@ -37,6 +37,7 @@ class Portfolio extends Component {
           ','
         )}&range=10y&token=${API_TOKEN}`
       )
+      console.log('response2', response2.data)
       this.setState({
         updatedStockInfo: response2.data
       })

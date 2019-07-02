@@ -59,8 +59,9 @@ class AllStocks extends Component {
       symbol: this.state.symbol,
       name: this.state.companyInfo.companyName,
       shares: this.state.quantity,
-      price: this.state.companyInfo.iexRealtimePrice,
-      // ||this.state.companyInfo.latestPrice,
+      price:
+        this.state.companyInfo.iexRealtimePrice ||
+        this.state.companyInfo.latestPrice,
       userId: this.props.user.id,
       date: this.state.companyInfo.latestTime
     }
