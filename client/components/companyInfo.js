@@ -8,7 +8,8 @@ const CompanyInfo = ({
   showComponent,
   buyShares,
   handleChange,
-  value
+  value,
+  hideModal
 }) => {
   let percentColor
   let message
@@ -39,23 +40,37 @@ const CompanyInfo = ({
   else message = ''
   return (
     <div className={showHideClassName}>
-      <h3 className={percentColor}>{comapanyDetails.change}</h3>
-      <h2 className="companyInfo name">
-        Company Name: {comapanyDetails.companyName}
-      </h2>
-      <h2 className="errorMessage">{message}</h2>
-      <h2 className="companyInfo">Symbol: "{comapanyDetails.symbol}"</h2>
-      <h3 className="companyInfo">Price: {price} USD</h3>
-      <div className="dropdown">
-        <div className="select-companyInfo">
-          <select value={value} onChange={handleChange}>
-            {dropDown}
-          </select>
-          <button className="companyInfoBtn" type="submit" onClick={buyShares}>
-            BUY
-          </button>
+      <section className="modal-companyInfo">
+        <h3 className={percentColor}>{comapanyDetails.change}</h3>
+        <h2 className="companyInfo name">
+          Company: {comapanyDetails.companyName}
+        </h2>
+        <hr />
+        <h2 className="errorMessage">{message}</h2>
+        <h2 className="companyInfo">Symbol: "{comapanyDetails.symbol}"</h2>
+        <h3 className="companyInfo">Price: {price} USD</h3>
+        <div className="dropdown">
+          <div className="select-companyInfo">
+            <select value={value} onChange={handleChange}>
+              {dropDown}
+            </select>
+            <button
+              className="companyInfoBtn"
+              type="submit"
+              onClick={buyShares}
+            >
+              BUY
+            </button>
+            <button
+              className="companyInfo-NotNowBtn"
+              type="submit"
+              onClick={hideModal}
+            >
+              NOT NOW
+            </button>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
