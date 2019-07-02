@@ -1,6 +1,6 @@
 import React from 'react'
 const ErrorMessage =
-  'You do not have enough money in your account to make this investment.'
+  'You do not have enough money on your account to make this investment.'
 
 const CompanyInfo = ({
   userBalance,
@@ -43,10 +43,10 @@ const CompanyInfo = ({
       <h2 className="companyInfo name">
         Company Name: {comapanyDetails.companyName}
       </h2>
+      <h2 className="errorMessage">{message}</h2>
       <h2 className="companyInfo">Symbol: "{comapanyDetails.symbol}"</h2>
       <h3 className="companyInfo">Price: {price} USD</h3>
       <div className="dropdown">
-        <h2 className="errorMessage">{message}</h2>
         <div className="select-companyInfo">
           <select value={value} onChange={handleChange}>
             {dropDown}

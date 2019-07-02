@@ -14,7 +14,7 @@ nav {
   display: flex;
   position: fixed;
   margin-top: -5%;
-  height: 3em;
+  height: 4em;
   align-items: center;
   justify-content: space-around;
   width: calc(100vw - 1em);
@@ -72,6 +72,7 @@ form div {
 
 .errorMessage {
   color: red;
+  text-align: center;
 }
 
 #todo-form {
@@ -90,12 +91,14 @@ form div {
 
 .companyInfo.name {
   font-weight: 600;
+  margin-top: 0;
 }
 
 .select-companyInfo {
   display: flex;
   width: 300%;
   margin-bottom: 30%;
+  margin-top: 30%;
 }
 
 select {
@@ -151,6 +154,7 @@ select {
 }
 
 .flex {
+  margin-top: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -293,4 +297,38 @@ input {
   margin-top: 3%;
   color: #2d342c;
   background: rgba(108, 149, 110, 0.55);
+}
+
+.flex-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#portfolio {
+  margin: 0.5%;
+}
+
+#table {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  background-color: #ccd6df;
+  padding: 10px;
+  width: 41em;
+  border-radius: 5px;
+}
+.header-portfolio {
+  display: flex;
+  justify-content: space-around;
+  width: 43em;
+  margin-bottom: 1%;
+}
+#grid-item {
+  background-color: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(12, 13, 23, 0.82);
+  padding: 5px;
+  font-size: 1.5em;
+  text-align: center;
+  border-radius: 5px;
+  width: 5em;
 }

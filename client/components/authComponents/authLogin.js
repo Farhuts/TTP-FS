@@ -20,7 +20,7 @@ class AuthLoginForm extends Component {
   render() {
     const {error} = this.props
     return (
-      <div>
+      <div className="margin-top">
         <LoginForm
           error={error}
           name="login"
