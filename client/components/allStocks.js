@@ -85,7 +85,7 @@ class AllStocks extends Component {
         <div className="allStocksPadding">
           <div className="allStocksBoarder">
             <h3>SEARCH SYMBOLS</h3>
-            <form id="todo-form" onSubmit={this.handleSubmit}>
+            <form id="input-form" onSubmit={this.handleSubmit}>
               <input
                 type="text"
                 onChange={this.handleChange}

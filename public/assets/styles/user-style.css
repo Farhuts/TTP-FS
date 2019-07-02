@@ -1,0 +1,83 @@
+.displayNameBtn:hover {
+  transform: translateY(10px);
+  background: rgba(12, 26, 48, 0.82);
+  color: white;
+}
+
+.flex-parentUserHome {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.flex-childUserHome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-childUserHome h3 {
+  margin-bottom: 0;
+}
+
+.h2-userHome {
+  margin-bottom: 0;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 1px;
+}
+.user-btns {
+  display: flex;
+  margin-top: 10%;
+  justify-content: center;
+  align-items: center;
+  width: 200%;
+}
+
+.stockBtn {
+  font-size: 1.2em;
+  height: 4em;
+  width: 7em;
+  margin: 5% 1% 4% 1%;
+  border-radius: 15px;
+  color: white;
+  background: rgba(15, 116, 98, 0.44);
+  margin-left: -6%;
+  transition: 1s;
+}
+
+.stockBtn:hover {
+  background: rgba(9, 89, 75, 0.76);
+}
+
+.portfolioBtn {
+  font-size: 1.2em;
+  height: 4em;
+  width: 7em;
+  margin: 5% 1% 4% 1%;
+  border-radius: 15px;
+  color: white;
+  background: rgba(23, 15, 116, 0.44);
+  transition: 1s;
+  margin-right: 5%;
+  margin-left: 5%;
+  transition: 1s;
+}
+.portfolioBtn:hover {
+  background: rgba(22, 13, 130, 0.74);
+}
+
+.transactionsBtn {
+  font-size: 1.2em;
+  height: 4em;
+  width: 7em;
+  margin: 5% 1% 4% 1%;
+  border-radius: 15px;
+  color: white;
+  background: rgba(103, 116, 15, 0.44);
+  transition: 1s;
+  margin-right: 5%;
+  margin-left: 15%;
+  transition: 1s;
+}
+.transactionsBtn:hover {
+  background: rgba(103, 116, 15, 0.83);
+}

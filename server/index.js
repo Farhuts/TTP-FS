@@ -12,7 +12,7 @@ const app = express()
 const socketio = require('socket.io')
 module.exports = app
 
-if (process.env.NODE_ENV !== 'production') require('../secrets')
+// if (process.env.NODE_ENV !== 'production') require('../secret')
 
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id))
@@ -37,7 +37,7 @@ const createApp = () => {
   // session middleware with passport
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || 'my best friend is Cody',
+      secret: process.env.SESSION_SECRET || 'very big secret',
       store: sessionStore,
       resave: false,
       saveUninitialized: false
@@ -79,8 +79,7 @@ const startListening = () => {
   const server = app.listen(PORT, () =>
     console.log(`Mixing it up on port ${PORT}`)
   )
-
-  // set up socket control center
+  // set up our socket control center
   const io = socketio(server)
   require('./socket')(io)
 }

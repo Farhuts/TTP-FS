@@ -1,0 +1,28 @@
+nav {
+  display: flex;
+  position: fixed;
+  margin-top: -5%;
+  height: 4em;
+  align-items: center;
+  justify-content: space-around;
+  width: calc(100vw - 1em);
+  border-radius: 0 0 1em 1em;
+  background-color: rgba(16, 47, 95, 0.3);
+  transition: 2s;
+}
+
+nav:hover {
+  background-color: rgba(12, 26, 48, 0.82);
+}
+nav a {
+  display: inline-block;
+  font-size: 1.1em;
+  margin: 1em;
+  text-decoration: none;
+  color: white;
+  transition: 1s;
+}
+
+nav a:hover {
+  transform: translateX(-10px);
+}

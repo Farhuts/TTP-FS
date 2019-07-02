@@ -1,0 +1,42 @@
+.H2transaction {
+  text-align: center;
+  color: #5d5e5d;
+}
+
+.transactions-flex {
+  display: flex;
+  color: #333;
+  justify-content: center;
+}
+
+.table-wrapper {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+table {
+  position: relative;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+thead {
+  display: flex;
+}
+
+td,
+th {
+  white-space: nowrap;
+  width: 12em;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  overflow: scroll;
+}
+
+th {
+  background-color: #eee;
+  position: sticky;
+  top: -1px;
+  z-index: 2;
+}

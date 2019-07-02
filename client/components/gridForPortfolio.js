@@ -5,7 +5,6 @@ const Grid = ({curPrice, openPrice, symbol, shares, newValue}) => {
   if (curPrice < openPrice) newStockValueColor = 'red'
   else if (curPrice === openPrice) newStockValueColor = 'grey'
   else newStockValueColor = 'green'
-  console.log('newValue', openPrice, curPrice)
 
   return (
     <div>
