@@ -7,7 +7,7 @@ import {
   UserHome,
   AllStocks,
   TransactionsList,
-  OwnedStocks
+  Portfolio
 } from './components'
 import {me} from './store'
 
@@ -28,7 +28,7 @@ class Routes extends Component {
             <Route path="/home" component={UserHome} />
             <Route path="/stocks" component={AllStocks} />
             <Route path="/transactions" component={TransactionsList} />
-            <Route path="/portfolio" component={OwnedStocks} />
+            <Route path="/portfolio" component={Portfolio} />
           </Switch>
         )}
         <Route component={AuthLoginForm} />
