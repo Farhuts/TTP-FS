@@ -13,12 +13,15 @@ class TransactionsList extends Component {
     const transacHistory = this.props.userTransactions.length ? (
       this.props.userTransactions.map(history => (
         <div key={history.id}>
-          <h3>
-            BUY symbol: {history.symbol}, shares - qty{history.shares}, ${(
-              history.price * history.shares
-            ).toFixed(2)}
-          </h3>
-          <h3>bought: {history.date}</h3>
+          <tbody>
+            <tr>
+              <td>{history.symbol}</td>
+              <td>{history.name}</td>
+              <td>{history.shares}</td>
+              <td>$ {(history.price * history.shares).toFixed(2)}</td>
+              <td>{history.date}</td>
+            </tr>
+          </tbody>
         </div>
       ))
     ) : (
@@ -28,8 +31,23 @@ class TransactionsList extends Component {
     )
     return (
       <div id="margin-top">
-        <h1>TRANSACTIONS</h1>
-        {transacHistory}
+        <h1 className="h1portfolio">TRANSACTION HISTORY</h1>
+        <div className="transactions-flex">
+          <div className="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Company Name</th>
+                  <th>Shares</th>
+                  <th>Price</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              {transacHistory}
+            </table>
+          </div>
+        </div>
       </div>
     )
   }

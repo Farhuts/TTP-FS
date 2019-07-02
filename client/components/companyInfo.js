@@ -13,8 +13,7 @@ const CompanyInfo = ({
 }) => {
   let percentColor
   let message
-  let price = comapanyDetails.iexRealtimePrice
-  // || comapanyDetails.latestPrice
+  let price = comapanyDetails.iexRealtimePrice || comapanyDetails.latestPrice
   let showHideClassName = showComponent
     ? 'component display-block'
     : 'component display-none'
@@ -25,7 +24,7 @@ const CompanyInfo = ({
     else percentColor = 'green'
   }
   let quantityDropDown = []
-  for (let i = 1; i < 50; i++) {
+  for (let i = 1; i <= 50; i++) {
     quantityDropDown.push(i)
   }
   const dropDown = quantityDropDown.map(elem => {
@@ -35,8 +34,7 @@ const CompanyInfo = ({
       </option>
     )
   })
-  if (value * comapanyDetails.iexRealtimePrice > userBalance)
-    message = ErrorMessage
+  if (value * price > userBalance) message = ErrorMessage
   else message = ''
   return (
     <div className={showHideClassName}>
