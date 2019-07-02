@@ -12,15 +12,15 @@ const SignupForm = ({displayName, handleSubmit, name, error}) => {
         <label htmlFor="userName">
           <small>Name</small>
         </label>
-        <input name="userName" type="text" />
+        <input name="userName" type="text" required />
         <label htmlFor="email">
           <small>Email</small>
         </label>
-        <input name="email" type="text" />
+        <input name="email" type="text" required />
         <label htmlFor="password">
           <small>Password</small>
         </label>
-        <input name="password" type="password" />
+        <input name="password" type="password" required />
         <button className="displayNameBtn" type="submit">
           {displayName}
         </button>

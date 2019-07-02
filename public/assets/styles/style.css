@@ -1,0 +1,57 @@
+body {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+form div {
+  margin: 1em;
+  display: inline-block;
+}
+.component {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.display-none {
+  display: none;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.gray {
+  color: gray;
+}
+
+.container.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  margin-top: 5%;
+  font-family: 'Quicksand', sans-serif;
+}
+
+#margin-top {
+  margin-top: 5%;
+}
+
+img {
+  width: 3.5em;
+  height: 3.5em;
+  border: 2px solid white;
+  border-radius: 32px;
+  padding: 2px;
+}
