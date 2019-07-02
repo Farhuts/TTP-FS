@@ -39,7 +39,9 @@ const CompanyInfo = ({
   return (
     <div className={showHideClassName}>
       <section className="modal-companyInfo">
-        <h3 className={percentColor}>{comapanyDetails.change}</h3>
+        <h3 className={percentColor}>
+          {(comapanyDetails.changePercent * 100).toFixed(3)}%
+        </h3>
         <h2 className="companyInfo name">
           Company: {comapanyDetails.companyName}
         </h2>

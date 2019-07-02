@@ -8,7 +8,7 @@ const Modal = ({hideModal, showModalComp}) => {
     <div className={showHideModal}>
       <section className="modal-main">
         <div className="container center">
-          Such simbol doesn't exist
+          There is no such symbol : (
           <button className="modalBtn" onClick={hideModal}>
             Ok
           </button>

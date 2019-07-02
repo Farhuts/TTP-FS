@@ -28,7 +28,7 @@ nav:hover {
 }
 nav a {
   display: inline-block;
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin: 1em;
   text-decoration: none;
   color: white;
@@ -90,7 +90,6 @@ form div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
 }
 
 #todo-form input {
@@ -179,6 +178,7 @@ hr {
   align-items: center;
   align-self: center;
   margin-top: 5%;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .flex {
@@ -230,11 +230,33 @@ input {
   margin: 5% 1% 4% 1%;
   border-radius: 15px;
   color: white;
-  background: rgba(113, 159, 60, 0.55);
+  background: rgba(101, 153, 202, 0.35);
   transition: 1s;
 }
+
+.stockBtnEmpty {
+  margin-top: 2%;
+  font-size: 1.2em;
+  height: 3em;
+  margin: 5% 1% 4% 1%;
+  border-radius: 15px;
+  color: white;
+  background: rgba(101, 153, 202, 0.35);
+  transition: 1s;
+}
+
+.stockBtnEmpty:hover {
+  background: rgba(44, 92, 138, 0.98);
+}
+
+.stockBtnEmpty-flex {
+  display: flex;
+  justify-content: center;
+  margin-top: 7%;
+}
+
 .findStockBtn:hover {
-  background: rgb(88, 124, 47);
+  background: rgba(44, 92, 138, 0.98);
 }
 .displayNameBtn:hover {
   transform: translateY(10px);
@@ -253,11 +275,18 @@ input {
   align-items: center;
 }
 
+.flex-childUserHome h3 {
+  margin-bottom: 0;
+}
+
 .h2-userHome {
   margin-bottom: 0;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 1px;
 }
 .user-btns {
   display: flex;
+  margin-top: 10%;
   justify-content: center;
   align-items: center;
   width: 200%;
@@ -326,15 +355,20 @@ input {
   height: 2em;
   width: 5em;
   border-radius: 5px;
-  margin-top: 3%;
-  color: #2d342c;
-  background: rgba(108, 149, 110, 0.55);
+  margin-top: 10%;
+  background: #e91e63;
+  color: white;
 }
 
 .flex-portfolio {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.flex-portfolio h1 {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 9px;
 }
 
 #portfolio {
@@ -344,7 +378,7 @@ input {
 #table {
   display: grid;
   grid-template-columns: repeat(5, auto);
-  background-color: #ccd6df;
+  background-color: #ccd6df57;
   padding: 10px;
   width: 41em;
   border-radius: 5px;
@@ -354,6 +388,7 @@ input {
   justify-content: space-around;
   width: 43em;
   margin-bottom: 1%;
+  font-family: 'Quicksand', sans-serif;
 }
 #grid-item {
   background-color: rgba(255, 255, 255, 0.97);
@@ -363,6 +398,7 @@ input {
   text-align: center;
   border-radius: 5px;
   width: 5em;
+  font-family: 'Oxygen', sans-serif;
 }
 
 .transactions-flex {
@@ -372,7 +408,7 @@ input {
 }
 
 .table-wrapper {
-  max-height: 700px;
+  max-height: 400px;
   overflow-y: scroll;
 }
 
@@ -401,14 +437,37 @@ th {
   position: sticky;
   top: -1px;
   z-index: 2;
-
-  &:first-of-type {
-    left: 0;
-    z-index: 3;
-  }
 }
 
 .h1portfolio {
   text-align: center;
-  padding: 2em 0 1em 0;
+  padding: 1em 0 1em 0;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 9px;
+}
+
+.allStocksBoarder {
+  padding: 3% 0 3% 0;
+  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
+  margin-left: 20%;
+  margin-right: 20%;
+  background: #faebd73d;
+}
+
+img {
+  width: 3.5em;
+  height: 3.5em;
+  border: 2px solid white;
+  border-radius: 32px;
+  padding: 2px;
+}
+
+.H2transaction {
+  text-align: center;
+  color: #5d5e5d;
+}
+
+.loginError {
+  text-align: center;
+  font-family: 'Arvo', serif;
 }

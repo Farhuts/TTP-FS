@@ -10,23 +10,27 @@ class TransactionsList extends Component {
     this.props.getTransactionsThunk()
   }
   render() {
+    let date
     const transacHistory = this.props.userTransactions.length ? (
-      this.props.userTransactions.map(history => (
-        <div key={history.id}>
-          <tbody>
-            <tr>
-              <td>{history.symbol}</td>
-              <td>{history.name}</td>
-              <td>{history.shares}</td>
-              <td>$ {(history.price * history.shares).toFixed(2)}</td>
-              <td>{history.date}</td>
-            </tr>
-          </tbody>
-        </div>
-      ))
+      this.props.userTransactions.map(history => {
+        if (history.createdAt) date = history.createdAt.slice(0, 10)
+        return (
+          <div key={history.id}>
+            <tbody>
+              <tr>
+                <td>{history.symbol}</td>
+                <td>{history.name}</td>
+                <td>{history.shares}</td>
+                <td>$ {(history.price * history.shares).toFixed(2)}</td>
+                <td>{date}</td>
+              </tr>
+            </tbody>
+          </div>
+        )
+      })
     ) : (
-      <div>
-        <h2>You don't have transactions yet</h2>
+      <div className="H2transaction">
+        <h2>You have no transactions yet.</h2>
       </div>
     )
     return (

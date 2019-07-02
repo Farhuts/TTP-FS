@@ -17,6 +17,7 @@ class UserHome extends Component {
         <div className="flex-childUserHome">
           <h2 className="h2-userHome">Welcome {userName}!</h2>
           <h3>Your current balance is {balance} USD</h3>
+          <hr />
           <div className="user-btns">
             <Link to="/stocks">
               <button className="stockBtn">Buy Stocks</button>
