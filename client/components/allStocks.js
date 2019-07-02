@@ -43,7 +43,6 @@ class AllStocks extends Component {
       let response = await axios.get(
         `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?token=${API_TOKEN}`
       )
-      console.log('response', response.data)
       this.setState({
         companyInfo: response.data,
         showComponent: true
@@ -73,24 +72,26 @@ class AllStocks extends Component {
   }
 
   hideModal = () => {
-    this.setState({showModalComp: false})
+    this.setState({showModalComp: false, showComponent: false})
   }
   render() {
     const userBalance = this.props.user.balance
     return (
       <div id="margin-top" className="main">
-        <h3>TICKET</h3>
-        <form id="todo-form" onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.symbol}
-            placeholder="Search Company"
-          />
-          <button className="findStockBtn" type="submit">
-            FIND
-          </button>
-        </form>
+        <div className="allStocksPadding">
+          <h3>TICKET</h3>
+          <form id="todo-form" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.symbol}
+              placeholder="Search Company"
+            />
+            <button className="findStockBtn" type="submit">
+              FIND
+            </button>
+          </form>
+        </div>
         <CompanyInfo
           userBalance={userBalance}
           comapanyDetails={this.state.companyInfo}
@@ -98,6 +99,7 @@ class AllStocks extends Component {
           value={this.state.quantity}
           showComponent={this.state.showComponent}
           buyShares={this.buyShares}
+          hideModal={this.hideModal}
         />
         <Modal
           hideModal={this.hideModal}
