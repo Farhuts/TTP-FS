@@ -6,6 +6,7 @@ import {logout} from '../store'
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div className="flex-nav">
     <nav>
+      <img src="assets/stock.png" />
       {isLoggedIn ? (
         <div>
           <Link to="/home">Home</Link>

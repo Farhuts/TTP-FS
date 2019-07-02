@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Grid from './gridForPortfolio'
 import {getStockValueThunk} from '../store'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 import KEY from '../../auth-config/keys'
@@ -37,7 +38,6 @@ class Portfolio extends Component {
           ','
         )}&range=10y&token=${API_TOKEN}`
       )
-      console.log('response2', response2.data)
       this.setState({
         updatedStockInfo: response2.data
       })
@@ -81,14 +81,27 @@ class Portfolio extends Component {
         )
       })
     ) : (
-      <div>Not yet</div>
+      <div>
+        <div id="table">
+          <div id="grid-item">{0}</div>
+          <div id="grid-item">{0}</div>
+          <div id="grid-item">{0}</div>
+          <div id="grid-item">{0}</div>
+          <div id="grid-item">{0}</div>
+        </div>
+        <div className="stockBtnEmpty-flex">
+          <Link to="/stocks">
+            <button className="stockBtnEmpty">BUY STOCKS</button>
+          </Link>
+        </div>
+      </div>
     )
     return (
       <div id="margin-top" className="flex-portfolio">
         <h1>PORTFOLIO</h1>
         <div className="header-portfolio">
           {headersArr.map(elem => {
-            return <div>{elem}</div>
+            return <div key={elem}>{elem}</div>
           })}
         </div>
         {stockInfo}

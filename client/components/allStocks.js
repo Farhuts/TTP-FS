@@ -7,7 +7,6 @@ import {newTransactionThunk} from '../store'
 
 import KEY from '../../auth-config/keys'
 const API_TOKEN = KEY.iex.clientKey
-const ErrorMessage = "Symbol Doesn't Exist"
 
 const defaultState = {
   quantity: 1,
@@ -53,6 +52,7 @@ class AllStocks extends Component {
       }
     }
   }
+
   buyShares = evt => {
     evt.preventDefault()
     let transactionInfo = {
@@ -66,32 +66,37 @@ class AllStocks extends Component {
       date: this.state.companyInfo.latestTime
     }
     this.props.newTransactionThunkDispatch(transactionInfo)
-    this.setState(defaultState)
   }
   showModal = () => {
     this.setState({showModalComp: true})
   }
 
   hideModal = () => {
-    this.setState({showModalComp: false, showComponent: false})
+    this.setState({
+      showModalComp: false,
+      showComponent: false,
+      symbol: ''
+    })
   }
   render() {
     const userBalance = this.props.user.balance
     return (
       <div id="margin-top" className="main">
         <div className="allStocksPadding">
-          <h3>TICKET</h3>
-          <form id="todo-form" onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              onChange={this.handleChange}
-              value={this.state.symbol}
-              placeholder="Search Company"
-            />
-            <button className="findStockBtn" type="submit">
-              FIND
-            </button>
-          </form>
+          <div className="allStocksBoarder">
+            <h3>SEARCH SYMBOLS</h3>
+            <form id="todo-form" onSubmit={this.handleSubmit}>
+              <input
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.symbol}
+                placeholder="Search Company"
+              />
+              <button className="findStockBtn" type="submit">
+                FIND
+              </button>
+            </form>
+          </div>
         </div>
         <CompanyInfo
           userBalance={userBalance}

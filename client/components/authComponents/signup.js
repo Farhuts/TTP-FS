@@ -24,7 +24,10 @@ const SignupForm = ({displayName, handleSubmit, name, error}) => {
         <button className="displayNameBtn" type="submit">
           {displayName}
         </button>
-        {error && error.response && <div> {error.response.data} </div>}
+        {error &&
+          error.response && (
+            <div className="loginError"> {error.response.data} </div>
+          )}
       </form>
     </div>
   )
