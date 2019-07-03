@@ -12,11 +12,11 @@ const LoginForm = ({displayName, handleSubmit, name, error}) => {
         <label htmlFor="email">
           <small>Email</small>
         </label>
-        <input name="email" type="text" required />
+        <input name="email" type="text" />
         <label htmlFor="password">
           <small>Password</small>
         </label>
-        <input name="password" type="password" required />
+        <input name="password" type="password" />
         <button className="displayNameBtn" type="submit">
           {displayName}
         </button>
