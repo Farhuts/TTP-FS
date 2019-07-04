@@ -12,7 +12,7 @@ const app = express()
 const socketio = require('socket.io')
 module.exports = app
 
-// if (process.env.NODE_ENV !== 'production') require('../secret')
+if (process.env.NODE_ENV !== 'production') require('../secret')
 
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id))

@@ -1,5 +1,5 @@
 {
-  "name": "stockMarket",
+  "name": "iex-stocks",
   "version": "2.0.0",
   "description": "TTP project",
   "engines": {
@@ -20,6 +20,9 @@
     "start": "node server",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
   },
   "husky": {
     "hooks": {
