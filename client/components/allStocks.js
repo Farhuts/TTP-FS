@@ -42,6 +42,7 @@ class AllStocks extends Component {
       let response = await axios.get(
         `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?token=${API_TOKEN}`
       )
+      console.log('response.data', response.data)
       this.setState({
         companyInfo: response.data,
         showComponent: true
