@@ -14,6 +14,11 @@ router.post('/stocks', async (req, res, next) => {
     const findUser = await User.findOne({
       where: {id: userId}
     })
+    const findStock = await Transaction.findOne({
+      where: {userId}
+    })
+
+    console.log('findStock======>', findStock.shares)
 
     let newBalance = findUser.balance - shares * price
     let updateUserBalance = await findUser.update({
@@ -40,6 +45,7 @@ router.get('/transactions', async (req, res, next) => {
     const allTransactions = await Transaction.findAll({
       where: {userId}
     })
+
     res.json(allTransactions)
   } catch (err) {
     next(err)
@@ -49,11 +55,33 @@ router.get('/transactions', async (req, res, next) => {
 router.get('/portfolio', async (req, res, next) => {
   try {
     const userId = req.user.id
+    const portfolioStocks = []
     const allTransactions = await Transaction.findAll({
       where: {userId},
-      attributes: ['symbol', 'shares', 'price', 'date']
+      attributes: ['symbol', 'shares']
     })
-    res.json(allTransactions)
+    const checkDublicates = {}
+    allTransactions.map(stock => {
+      if (!checkDublicates[stock.dataValues.symbol])
+        checkDublicates[stock.dataValues.symbol] = Number(
+          stock.dataValues.shares
+        )
+      else
+        checkDublicates[stock.dataValues.symbol] += Number(
+          stock.dataValues.shares
+        )
+    })
+
+    for (let key in checkDublicates) {
+      if (checkDublicates.hasOwnProperty(key)) {
+        let innerObj = {}
+        innerObj.symbol = key
+        innerObj.shares = checkDublicates[key]
+        portfolioStocks.push(innerObj)
+      }
+    }
+    console.log('portfolioStocks', portfolioStocks)
+    res.json({allTransactions, portfolioStocks})
   } catch (err) {
     next(err)
   }

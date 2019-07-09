@@ -25,6 +25,7 @@ const createTransaction = user => ({type: BUY_STOCK, user})
 export const getTransactionsThunk = () => async dispatch => {
   try {
     let allTransactions = await axios.get('/api/transactions/transactions')
+    console.log('allTransactions', allTransactions.data)
     dispatch(getTransactions(allTransactions.data))
   } catch (err) {
     console.error(err)
