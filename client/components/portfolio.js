@@ -30,6 +30,7 @@ class Portfolio extends Component {
           ','
         )}&types=quote&displayPercent=true&filter=symbol,companyName,open,latestPrice,change,changePercent&token=${API_TOKEN}`
       )
+      console.log('response', response.data)
       this.setState({
         newStockValue: response.data
       })
@@ -49,53 +50,57 @@ class Portfolio extends Component {
   render() {
     const newStockInfo = this.state.newStockValue
     const updatedStockInfo = this.state.updatedStockInfo
+    const transactionHistory = this.props.stockInfo.transaction
+    const portfolioInfo = transactionHistory.portfolioStocks
+
     const headersArr = ['SYMBOL', 'SHARES', 'VALUE', 'OPEN PRICE', 'CUR PRICE']
-    let newValue, openPrice, curPrice
+    let newValue, openPrice, curPrice, stockInfo
 
-    const stockInfo = this.props.stockInfo.transaction.length ? (
-      this.props.stockInfo.transaction.map(stock => {
-        symbolArr.push(stock.symbol)
+    stockInfo =
+      portfolioInfo && portfolioInfo.length ? (
+        portfolioInfo.map(stock => {
+          symbolArr.push(stock.symbol)
+          if (newStockInfo[stock.symbol] && updatedStockInfo[stock.symbol]) {
+            newValue = (
+              newStockInfo[stock.symbol].quote.latestPrice * stock.shares
+            ).toFixed(2)
+            openPrice = newStockInfo[stock.symbol].quote.open
+            curPrice = updatedStockInfo[stock.symbol].price
+          } else {
+            newValue = 0
+            openPrice = 0
+            curPrice = 0
+          }
 
-        if (newStockInfo[stock.symbol] && updatedStockInfo[stock.symbol]) {
-          newValue = (
-            newStockInfo[stock.symbol].quote.latestPrice * stock.shares
-          ).toFixed(2)
-          openPrice = newStockInfo[stock.symbol].quote.open
-          curPrice = updatedStockInfo[stock.symbol].price
-        } else {
-          newValue = 0
-          openPrice = 0
-          curPrice = 0
-        }
-
-        return (
-          <div key={stock.id}>
-            <Grid
-              symbol={stock.symbol}
-              shares={stock.shares}
-              newValue={newValue}
-              openPrice={openPrice}
-              curPrice={curPrice}
-            />
+          return (
+            <div key={stock.symbol}>
+              <Grid
+                symbol={stock.symbol}
+                shares={stock.shares}
+                newValue={newValue}
+                openPrice={openPrice}
+                curPrice={curPrice}
+              />
+            </div>
+          )
+        })
+      ) : (
+        <div>
+          <div id="table">
+            <div id="grid-item">{0}</div>
+            <div id="grid-item">{0}</div>
+            <div id="grid-item">{0}</div>
+            <div id="grid-item">{0}</div>
+            <div id="grid-item">{0}</div>
           </div>
-        )
-      })
-    ) : (
-      <div>
-        <div id="table">
-          <div id="grid-item">{0}</div>
-          <div id="grid-item">{0}</div>
-          <div id="grid-item">{0}</div>
-          <div id="grid-item">{0}</div>
-          <div id="grid-item">{0}</div>
+          <div className="stockBtnEmpty-flex">
+            <Link to="/stocks">
+              <button className="stockBtnEmpty">BUY STOCKS</button>
+            </Link>
+          </div>
         </div>
-        <div className="stockBtnEmpty-flex">
-          <Link to="/stocks">
-            <button className="stockBtnEmpty">BUY STOCKS</button>
-          </Link>
-        </div>
-      </div>
-    )
+      )
+
     return (
       <div id="margin-top" className="flex-portfolio">
         <h1>PORTFOLIO</h1>
