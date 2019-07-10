@@ -14,12 +14,6 @@ router.post('/stocks', async (req, res, next) => {
     const findUser = await User.findOne({
       where: {id: userId}
     })
-    const findStock = await Transaction.findOne({
-      where: {userId}
-    })
-
-    console.log('findStock======>', findStock.shares)
-
     let newBalance = findUser.balance - shares * price
     let updateUserBalance = await findUser.update({
       id: userId,
@@ -80,7 +74,6 @@ router.get('/portfolio', async (req, res, next) => {
         portfolioStocks.push(innerObj)
       }
     }
-    console.log('portfolioStocks', portfolioStocks)
     res.json({allTransactions, portfolioStocks})
   } catch (err) {
     next(err)

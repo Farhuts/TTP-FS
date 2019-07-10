@@ -3,11 +3,19 @@
 }
 
 .allStocksBoarder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 3% 0 3% 0;
-  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
-  margin-left: 20%;
-  margin-right: 20%;
+  height: 60vh;
+  border-radius: 10px;
+  margin: 0 20% 5% 20%;
   background: #e5dfd63d;
+  background: url('../assets/stock-icon.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  opacity: 0.7;
 }
 
 .companyInfo {
@@ -21,6 +29,9 @@
 
 .main h3 {
   text-align: center;
+}
+.allStocksBoarder h3 {
+  color: white;
 }
 
 #input-form {
@@ -37,11 +48,15 @@
   font-size: 1.2em;
   height: 3em;
   width: 14%;
-  margin: 5% 1% 4% 1%;
+  margin: 8% 1% 4% 1%;
   border-radius: 15px;
   color: white;
   background: rgba(101, 153, 202, 0.35);
   transition: 1s;
+}
+
+.findStockBtn:hover {
+  background: rgba(44, 92, 138, 0.98);
 }
 
 .modal-companyInfo {
@@ -102,21 +117,6 @@ select {
 .companyInfo-NotNowBtn:hover {
   background: #c23c69;
   color: white;
-}
-
-.findStockBtn {
-  font-size: 1.2em;
-  height: 3em;
-  width: 14%;
-  margin: 5% 1% 4% 1%;
-  border-radius: 15px;
-  color: white;
-  background: rgba(101, 153, 202, 0.35);
-  transition: 1s;
-}
-
-.findStockBtn:hover {
-  background: rgba(44, 92, 138, 0.98);
 }
 
 hr {

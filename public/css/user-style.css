@@ -81,3 +81,36 @@
 .transactionsBtn:hover {
   background: rgba(103, 116, 15, 0.83);
 }
+
+.ownStocksH3 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50vw;
+}
+
+.userHomeBalanceClassGrey,
+.userHomeBalanceClassStandart {
+  display: flex;
+  margin: 1%;
+  border: 1px solid #8080807a;
+  border-radius: 5px;
+  padding: 0em 5em;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.userHomeBalanceClassGrey img,
+.userHomeBalanceClassStandart img {
+  margin-right: 3%;
+}
+.userHomeBalanceClassGrey {
+  background-color: rgba(16, 47, 95, 0.14);
+}
+
+.userHomeBalanceClassStandart {
+  background-color: #80808012;
+}
+
+.userHomeBuyBtn {
+  text-decoration: none;
+}

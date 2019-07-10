@@ -30,7 +30,6 @@ class Portfolio extends Component {
           ','
         )}&types=quote&displayPercent=true&filter=symbol,companyName,open,latestPrice,change,changePercent&token=${API_TOKEN}`
       )
-      console.log('response', response.data)
       this.setState({
         newStockValue: response.data
       })
