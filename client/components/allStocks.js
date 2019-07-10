@@ -42,14 +42,11 @@ class AllStocks extends Component {
       let response = await axios.get(
         `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?token=${API_TOKEN}`
       )
+      console.log('response', response.data)
       this.setState({
         companyInfo: response.data,
         showComponent: true
       })
-      let response3 = await axios.get(
-        'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=5min&apikey=X92LT9PTNSWZ4AV1'
-      )
-      console.log('response3.data', response3.data)
     } catch (err) {
       if (err) {
         this.setState({showModalComp: true})
@@ -88,7 +85,7 @@ class AllStocks extends Component {
       <div id="margin-top" className="main">
         <div className="allStocksPadding">
           <div className="allStocksBoarder">
-            <h3>SEARCH SYMBOLS</h3>
+            <h3> SEARCH SYMBOLS</h3>
             <form id="input-form" onSubmit={this.handleSubmit}>
               <input
                 type="text"

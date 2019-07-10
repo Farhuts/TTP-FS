@@ -27,7 +27,7 @@ export const me = () => async dispatch => {
 export const userInfo = () => async dispatch => {
   try {
     const res = await axios.get('/api/users/home')
-    dispatch(getUserInfo(res.data))
+    dispatch(getUserInfo(res.data.user))
   } catch (err) {
     console.error(err)
   }
