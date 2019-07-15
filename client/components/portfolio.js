@@ -20,8 +20,8 @@ class Portfolio extends Component {
   }
   componentDidMount() {
     this.props.getStockValueThunk()
-    setTimeout(this.getUpdatedInfo, 100)
-    setInterval(this.getUpdatedInfo, 10000)
+    setTimeout(this.getUpdatedInfo, 1)
+    setInterval(this.getUpdatedInfo, 5000)
   }
   getUpdatedInfo = async () => {
     try {
