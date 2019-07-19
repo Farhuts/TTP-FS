@@ -20,7 +20,7 @@ class Portfolio extends Component {
   }
   componentDidMount() {
     this.props.getStockValueThunk()
-    setTimeout(this.getUpdatedInfo, 1)
+    setTimeout(this.getUpdatedInfo, 1000)
     setInterval(this.getUpdatedInfo, 5000)
   }
   getUpdatedInfo = async () => {
@@ -63,7 +63,9 @@ class Portfolio extends Component {
             newValue = (
               newStockInfo[stock.symbol].quote.latestPrice * stock.shares
             ).toFixed(2)
-            openPrice = newStockInfo[stock.symbol].quote.open
+            openPrice =
+              newStockInfo[stock.symbol].quote.open ||
+              newStockInfo[stock.symbol].quote.latestPrice
             curPrice = updatedStockInfo[stock.symbol].price
           } else {
             newValue = 0
